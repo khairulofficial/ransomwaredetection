@@ -4,19 +4,11 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-# for data visualisation
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 # for machine learning
 from sklearn.model_selection import train_test_split
-from sklearn.dummy import DummyClassifier
 
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
-from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score,mean_squared_error, r2_score
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import KFold, cross_val_score
