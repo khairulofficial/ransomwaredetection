@@ -16,6 +16,6 @@ Note:
 ![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/c951cf27-35ea-48cc-9540-8628aae919b2)
 - This is how the interface looks like once prediction is displayed
 ![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/41c34fae-8fcb-4405-80bd-fd3dafc99695)
-
+- Feedback from professors who visited my project booth which can be a learning point for all of us: Higlight the prediction based on severity e.g. red for ransomware, green for goodware to help users notice easily. The dataset, obtained by paid researchers, may not be the best dataset as they have carried out encoding hence limiting interpretablity.
 
 
