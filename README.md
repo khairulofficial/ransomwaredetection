@@ -10,6 +10,12 @@ Note:
 - For No.2 Notebook for Anaylsis, ensure that you have installed the libraries shown in the import statement using "pip install -r requirements.txt"
 - Section 12 of the notebook, Feature Reduction Using Principal Component Analysis, is miscelleanous. We will not recommend it as interpretability is limitied. You can interact with the scores and loadings plot to analyse potential relationships.
 - For No.3 Code for Streamlit Web Application, ensure that you have installed streamlit. I will update by deploying it onto streamlit cloud in the future.
-- Based on analysis from the notebook, I recommend users to select Random Forest as the top performing model. However, users can play around and choose other models. This flexibility is offered to give users an experience of how users in SMEs can choose their model based on company requirements. For instance, so companies may not prioritise accuracy. Hence simpler models such as Logistic Regression can be choosen. 
-- Test use case files refer to the files that users can upload into the web app. It does not refet to files for unit testing. For instance, we can experiment with a use case where the user wants to only determine the outcome of the file using only 2 features instead of 50 features. The ground truth of the file is denoted by the letter in the file name e.g. Test Ransomware File E 2 features means this is an Encryptor Ransomware with 2 feautres.
+- Upload the text use case CSV file. Test use case files refer to the files that users can upload into the web app. It does not refet to files for unit testing. For instance, we can experiment with a use case where the user wants to only determine the outcome of the file using only 2 features instead of 50 features. The ground truth of the file is denoted by the letter in the file name e.g. Test Ransomware File E 2 features means this is an Encryptor Ransomware with 2 features.
+- Next, based on analysis from the notebook, I recommend users to select Random Forest as the top performing model. However, users can play around and choose other models. This flexibility is offered to give users an experience of how users in SMEs can choose their model based on company requirements. For instance, so companies may not prioritise accuracy. Hence simpler models such as Logistic Regression can be choosen. 
+- This is how the web application interface looks like upon running the Streamlit app
+![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/c951cf27-35ea-48cc-9540-8628aae919b2)
+- This is how the interface looks like once prediction is displayed
+![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/41c34fae-8fcb-4405-80bd-fd3dafc99695)
+
+
 
