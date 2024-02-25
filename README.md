@@ -1,8 +1,8 @@
-This project is regarding using machine learning for ransomware detection in SMEs. SMEs do not have the luxury of time and resources to analyse all features of a ransomware. As such, this projects acts as triage where we utilise the minimum number of feature possible while still maintaining an accuracy score of at least 90% for our top model. More background context will be updated. This project contains 3 files:
+This project is regarding using machine learning for ransomware detection in SMEs. SMEs do not have the luxury of time and resources to analyse all features of a ransomware. As such, this projects acts as triage where we utilise the minimum number of feature possible while still maintaining an accuracy score of at least 90% for our top model. More background context will be updated. This project contains 4 main files:
 1) Ransomware Dataset
 2) Notebook for Analysis 
 3) Code for Streamlit Web Application (main.py)
-4-9) Test use case files for Streamlit Web Application
+4) Various Test use case files for Streamlit Web Application
 
 Note:
 - The dataset has 50 features
