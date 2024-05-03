@@ -17,7 +17,7 @@ azure-mgmt-keyvault==10.3.0
 azure-mgmt-network==25.2.0
 azure-mgmt-resource==23.0.1
 azure-mgmt-storage==21.1.0
-azureml-automl-core
+azureml-automl-core==1.55.0
 azureml-core==1.55.0
 azureml-dataprep==5.1.4
 azureml-dataprep-native==41.0.0
@@ -28,7 +28,7 @@ azureml-pipeline-core==1.55.0
 azureml-pipeline-steps==1.55.0
 azureml-sdk==1.55.0
 azureml-telemetry==1.55.0
-azureml-train-automl-client==1.55.0
+azureml-train-automl-client
 azureml-train-core==1.55.0
 azureml-train-restclients-hyperdrive==1.55.0
 backports.tempfile==1.0
