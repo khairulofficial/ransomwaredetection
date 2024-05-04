@@ -23,7 +23,8 @@ def prepare_data(test_file):
    
     features = test_file.columns
 
-    df = pd.read_csv("data/ransomware_dataset.csv") # training file
+    url = 'https://raw.githubusercontent.com/Juan-Herrera-Silva/Paper-SENSORS/main/Annex%20A%20-%20Dataset%20with%2050%20chosen%20features.csv'
+    df = pd.read_csv(url) # training file
     df['family'] = df['family'].replace(['G'], 0)
     df['family'] = df['family'].replace(['E'], 1)
     df['family'] = df['family'].replace(['L'], 2)
