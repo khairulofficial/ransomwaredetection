@@ -24,6 +24,7 @@ def prepare_data(test_file):
     features = test_file.columns
 
     df = pd.read_csv("data/ransomware_dataset.csv") # training file
+    print('file read as df', df)
     df['family'] = df['family'].replace(['G'], 0)
     df['family'] = df['family'].replace(['E'], 1)
     df['family'] = df['family'].replace(['L'], 2)
