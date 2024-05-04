@@ -11,10 +11,13 @@ def main():
     2. Select machine learning model. If unsure, please use recommended model.
     3. Click "Predict"
     """)
-
-    # file upload
-  
+    
+    
+    st.sidebar.image("C:\Users\khair\Pictures\ransomwarepic.webp", use_column_width=True) [image]
+    
+    # upload file
     test_file = st.sidebar.file_uploader(label="Upload Generated CSV File", type="csv", accept_multiple_files=False)
+    
         
     if test_file:
         test_file = pd.read_csv(test_file)
