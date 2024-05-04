@@ -1,7 +1,4 @@
 scikit-learn
 pandas
 streamlit
-train
-test
-models
-features
+sklearn
