@@ -12,8 +12,11 @@ def main():
     3. Click "Predict"
     """)
     
-    
-    st.sidebar.image(r"C:\Users\khair\Pictures\LogAIAP.png", use_column_width=True) [image]
+    # Load your image
+    image_data = open("C:\Users\khair\Pictures\LogAIAP.png", "rb").read()
+
+    # Display the image in the sidebar
+    st.sidebar.image(image_data, width=100)
     
     # upload file
     test_file = st.sidebar.file_uploader(label="Upload Generated CSV File", type="csv", accept_multiple_files=False)
