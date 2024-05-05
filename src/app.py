@@ -58,21 +58,17 @@ def main():
                 
                 theme_bad = {'bgcolor': '#FFF0F0','title_color': 'red','content_color': 'red','icon_color': 'red', 'icon': 'fa fa-times-circle'}
                 theme_good = {'bgcolor': '#EFF8F7','title_color': 'green','content_color': 'green','icon_color': 'green', 'icon': 'fa fa-check-circle'}
-                                
-                with cc[1]:
-                 hc.info_card(title='Some BAD BAD', content='This is really bad',bar_value=12,theme_override=theme_bad)
-                
-                
+                            
                 # display prediction
                 if family == 0:
-                    with st.columns(1):
+                    with st.columns():
                          hc.info_card(title='This file is predicted to be a :green[Goodware]', content='All good!', sentiment='good',bar_value=100)
                 
                     # st.header(f'\nResult: This file is predicted to be a :green[Goodware]')
                 
                 if family == 1:
                     # display further instructions
-                    with st.columns(1):
+                    with st.columns():
                         hc.info_card(title='This file is predicted to be a :red[Encryptor Ransomware]', content='Please delete the original file if you have downloaded it on any machine and inform your admin', sentiment='bad',bar_value=100)
                 
                     
