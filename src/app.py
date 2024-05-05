@@ -97,7 +97,7 @@ def main():
                 st.warning("Invalid File. Please try another file.")
     elif selected == "Demo":
         st.title("Sample Goodware Demo")
-        video_file = open('https://github.com/khairulofficial/ransomwaredetection/blob/2a8e6ff20a112511bcb51c71f79858545ce6425a/src/data/goodwaresampledemo.mp4', 'rb')
+        video_file = open('goodwaresampledemo.mp4', 'rb')
         video_bytes = video_file.read()
         st.video(video_bytes)
         
