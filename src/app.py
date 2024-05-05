@@ -82,11 +82,14 @@ def show_demo_page():
     st.video("https://youtu.be/DOjKgGNEQ5A")
 
 def show_vis_page():
-    st.title("data page")
+    st.title("Model Comparison")
+    st.text("Results (when all features are used for training)")
     col1, col2, col3 = st.columns(3)
-    col1.metric("Best Accuracy: :blue[Random Forest]", "100%", "")
+    col1.metric("Best Accuracy: :blue[Random Forest]", "100%", "Slightly better than XGBoost & Neural Network")
     col2.metric("Best Recall: :blue[Random Forest, XGBoost]", "100%", "3% compared to Neural Network")
     col3.metric("Lowest Latency: :blue[Logistic Regression]", "1.43ms", "~ 2x faster than Random Forest")
+  
+
 
     
 def main():
