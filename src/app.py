@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 def plot_accuracy():
     # Sample accuracy scores (modify as needed)
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    accuracy_scores = [0.70, 0.83, 0.98, 0.74,0.99,0.99,1]
+    accuracy_scores = [70, 83, 98, 74,99,99,100]
     
     # Model names (modify as needed)
     model_names = ["SVM", "Logistic Regression", "KNN", "Naive Bayes", "Neural Network", "XGBoost", "Random Forest"]
@@ -19,13 +19,67 @@ def plot_accuracy():
     
     # Add labels and title
     plt.xlabel("Model")
-    plt.ylabel("Accuracy")
+    plt.ylabel("Accuracy (%)")
     plt.title("Model Accuracy Comparison")
     
     # Customize the plot (optional)
     plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
     plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
     for i, v in enumerate(accuracy_scores):
+        plt.text(i, v + 0.01, f"{v:.2f}", ha='center', va='bottom')
+    
+    # Display the plot
+    plt.tight_layout()
+    st.pyplot()
+
+def plot_recall():
+    # Sample accuracy scores (modify as needed)
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    recall_scores = [71, 83, 96, 73,97,100,100]
+    
+    # Model names (modify as needed)
+    model_names = ["SVM", "Logistic Regression", "KNN", "Naive Bayes", "Neural Network", "XGBoost", "Random Forest"]
+    
+    # Create the bar chart
+    plt.figure(figsize=(8, 6))  # Adjust figure size as desired
+    plt.bar(model_names, recall_scores)
+    
+    # Add labels and title
+    plt.xlabel("Model")
+    plt.ylabel("Recall (%)")
+    plt.title("Model Recall Comparison")
+    
+    # Customize the plot (optional)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
+    plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
+    for i, v in enumerate(recall_scores):
+        plt.text(i, v + 0.01, f"{v:.2f}", ha='center', va='bottom')
+    
+    # Display the plot
+    plt.tight_layout()
+    st.pyplot()
+
+def plot_latency():
+    # Sample accuracy scores (modify as needed)
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    latency = [39, 1.43, 26.89, 1.69,10.88,3.38,2.18]
+    
+    # Model names (modify as needed)
+    model_names = ["SVM", "Logistic Regression", "KNN", "Naive Bayes", "Neural Network", "XGBoost", "Random Forest"]
+    
+    # Create the bar chart
+    plt.figure(figsize=(8, 6))  # Adjust figure size as desired
+    plt.bar(model_names, latency)
+    
+    # Add labels and title
+    plt.xlabel("Model")
+    plt.ylabel("Duration (ms)")
+    plt.title("Model Latency Comparison")
+    
+    # Customize the plot (optional)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
+    plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
+    for i, v in enumerate(latency):
         plt.text(i, v + 0.01, f"{v:.2f}", ha='center', va='bottom')
     
     # Display the plot
@@ -128,6 +182,10 @@ def show_vis_page():
     with col2:
         if selection == "Accuracy":
             plot_accuracy()
+        elif selection == "Recall":
+            plot_recall()
+        else:
+            plot_latency()
 
     
   
