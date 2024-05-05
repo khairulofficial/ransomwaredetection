@@ -97,9 +97,7 @@ def main():
                 st.warning("Invalid File. Please try another file.")
     elif selected == "Demo":
         st.title("Sample Goodware Demo")
-        video_file = open('goodwaresampledemo.mp4', 'rb')
-        video_bytes = video_file.read()
-        st.video(video_bytes)
+        st.video('https://www.youtube.com/watch?v=hEPoto5xp3k')
         
     else:
         st.title("data page")
