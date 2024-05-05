@@ -14,10 +14,10 @@ def main():
     st.set_page_config(layout="wide", page_icon=image_url, page_title = "Ransomware Detection App")
     st.title("Ransomware Detection Web App")
     
+    st.text("")
+    st.text("")
+
     # instructions
-    st.sidebar.text("")
-    st.sidebar.text("")
- 
     st.markdown("""
     1. Click "Browse File" to upload the generated csv file. You can download the sample files from [Github](https://github.com/khairulofficial/ransomwaredetection/tree/main/sample%20files) 
     2. Select machine learning model. If unsure, please use recommended model.
@@ -35,10 +35,8 @@ def main():
     # Display the HTML in the sidebar with unsafe_allow_html
     st.sidebar.markdown(html_img, unsafe_allow_html=True)
     
-    st.text("")
-    st.text("")
-    st.text("")
-    st.text("")
+    st.sidebar.text("")
+    st.sidebar.text("")
     
     # upload file
     test_file = st.sidebar.file_uploader(label="Upload Generated CSV File", type="csv", accept_multiple_files=False)
