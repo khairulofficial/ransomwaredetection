@@ -99,7 +99,7 @@ def main():
     selected = option_menu(
             menu_title=None,  
             options=["Home", "Demo", "Visualisation"], 
-            icons=["house", "youtube-play", "bar-chart"],  
+            icons=["house", "play", "bar-chart"],  
             menu_icon="cast", 
             default_index=0, 
             orientation="horizontal",)
