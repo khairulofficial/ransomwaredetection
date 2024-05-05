@@ -80,9 +80,6 @@ def main():
                 with cc[1]:
                     hc.info_card(title='Accuracy:', content=f'{cvscore:.2%}', sentiment='neutral',bar_value=100)
                 
-            
-                st.write(f"Model: {model}")
-                st.write("Accuracy: ",f"{cvscore:.2%}")
                 
         except:
             st.warning("Invalid File. Please try another file.")
