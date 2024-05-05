@@ -31,7 +31,7 @@ def main():
     
         # instructions
         st.markdown("""
-        1. Click "Browse File" to upload the generated csv file. You can download the sample files from [Github](https://github.com/khairulofficial/ransomwaredetection/tree/main/sample%20files) 
+        1. Click "Browse File" to upload the csv file. You can use sample files from [Github](https://github.com/khairulofficial/ransomwaredetection/tree/main/sample%20files) 
         2. Select machine learning model. If unsure, please use recommended model.
         3. Click "Predict"
         """)
@@ -95,10 +95,10 @@ def main():
                     
             except:
                 st.warning("Invalid File. Please try another file.")
-        elif selected == "Demo":
-            st.title("Demo page")
-        else:
-            st.title("data page")
+    elif selected == "Demo":
+        st.title("Demo page")
+    else:
+        st.title("data page")
 
 if __name__ == "__main__":
     main()
