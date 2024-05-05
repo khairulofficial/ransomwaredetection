@@ -13,7 +13,7 @@ def plot_accuracy():
     model_names = ["SVM", "Logistic Regression", "KNN", "Naive Bayes", "Neural Network", "XGBoost", "Random Forest"]
     
     # Create the bar chart
-    plt.figure(figsize=(8, 6))  # Adjust figure size as desired
+    fig = plt.figure(figsize=(8, 6))  # Adjust figure size as desired
     plt.bar(model_names, accuracy_scores)
     
     # Add labels and title
@@ -27,7 +27,7 @@ def plot_accuracy():
     
     # Display the plot
     plt.tight_layout()
-    plt.show()
+    st.pyplot(fig)
     
 def show_home_page():
     st.title("Ransomware Detection App")
