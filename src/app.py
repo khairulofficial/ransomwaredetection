@@ -59,12 +59,12 @@ def main():
                 if family == 1:
                     # display further instructions
                     st.header(f'\nResult: This file is predicted to be a :red[Encryptor Ransomware]')
-                    st.write(f'\n:red[WARNING:] Please delete the file if you have accidentally download it on any machine and inform your admin')
+                    st.write(f'\n:red[WARNING:] Please delete the original file if you have downloaded it on any machine and inform your admin')
 
                 if family == 2:
                     # display further instructions
                     st.header(f'\nResult: This file is predicted to be a :red[Locker Ransomware]')
-                    st.write(f'\n:red[WARNING:] Please delete the file if you have accidentally download it on any machine and inform your admin')
+                    st.write(f'\n:red[WARNING:] Please delete the original file if you have downloaded it on any machine and inform your admin')
                 # model and file details
                 st.write(f"Model: {model}")
                 st.write("Accuracy: ",f"{cvscore:.2%}")
