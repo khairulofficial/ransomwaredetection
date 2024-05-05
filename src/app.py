@@ -14,19 +14,19 @@ def plot_accuracy():
     
     # Create the bar chart
     fig = plt.figure(figsize=(8, 6))  # Adjust figure size as desired
-    plt.bar(model_names, accuracy_scores)
+    fig.bar(model_names, accuracy_scores)
     
     # Add labels and title
-    plt.xlabel("Model")
-    plt.ylabel("Accuracy")
-    plt.title("Model Accuracy Comparison")
+    fig.xlabel("Model")
+    fig.ylabel("Accuracy")
+    fig.title("Model Accuracy Comparison")
     
     # Customize the plot (optional)
-    plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
-    plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
+    fig.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
+    fig.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
     
     # Display the plot
-    plt.tight_layout()
+    fig.tight_layout()
     st.pyplot(fig)
     
 def show_home_page():
