@@ -29,8 +29,7 @@ def main():
     # Load image
     image = Image.open(image_url)
     new_image = image.resize((100, 100))
-    st.image(new_image)
-    st.sidebar.image(new_image,use_column_width=True)
+    st.sidebar.image(new_image)
     
     # upload file
     test_file = st.sidebar.file_uploader(label="Upload Generated CSV File", type="csv", accept_multiple_files=False)
