@@ -83,6 +83,10 @@ def show_demo_page():
 
 def show_vis_page():
     st.title("data page")
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Best Accuracy: Random Forest", "100%", "1.2 °F")
+    col2.metric("Best Recall: Random Forest", "100%", "-8%")
+    col3.metric("Lowest Latency: Logistic Regression ", "1.43ms", "-8%")
 
     
 def main():
