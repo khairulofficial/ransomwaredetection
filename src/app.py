@@ -97,7 +97,8 @@ def main():
                 st.warning("Invalid File. Please try another file.")
     elif selected == "Demo":
         st.title("Sample Goodware Demo")
-        st.video("https://drive.google.com/file/d/1S4Q4wthnKAT8mwep_u7qwH_V0sy-B93n/view?usp=sharing")
+        with open("data/goodwaresampledemo.mp4", 'rb') as v:
+            st.video(v)
         
     else:
         st.title("data page")
