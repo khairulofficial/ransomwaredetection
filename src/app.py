@@ -6,11 +6,10 @@ from streamlit_option_menu import option_menu
 import matplotlib.pyplot as plt
 
 def plot_accuracy():
-    # Sample accuracy scores (modify as needed)
+    # accuracy scores 
     st.set_option('deprecation.showPyplotGlobalUse', False)
     accuracy_scores = [70, 83, 98, 74,99,99,100]
     
-    # Model names (modify as needed)
     model_names = ["SVM", "Logistic Regression", "KNN", "Naive Bayes", "Neural Network", "XGBoost", "Random Forest"]
     
     # Create the bar chart
@@ -22,7 +21,7 @@ def plot_accuracy():
     plt.ylabel("Accuracy (%)")
     plt.title("Model Accuracy Comparison")
     
-    # Customize the plot (optional)
+    # Customize the plot 
     plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
     plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
     for i, v in enumerate(accuracy_scores):
@@ -33,11 +32,10 @@ def plot_accuracy():
     st.pyplot()
 
 def plot_recall():
-    # Sample accuracy scores (modify as needed)
+    # recall scores
     st.set_option('deprecation.showPyplotGlobalUse', False)
     recall_scores = [71, 83, 96, 73,97,100,100]
     
-    # Model names (modify as needed)
     model_names = ["SVM", "Logistic Regression", "KNN", "Naive Bayes", "Neural Network", "XGBoost", "Random Forest"]
     
     # Create the bar chart
@@ -49,7 +47,7 @@ def plot_recall():
     plt.ylabel("Recall (%)")
     plt.title("Model Recall Comparison")
     
-    # Customize the plot (optional)
+    # Customize the plot 
     plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
     plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
     for i, v in enumerate(recall_scores):
@@ -60,11 +58,11 @@ def plot_recall():
     st.pyplot()
 
 def plot_latency():
-    # Sample accuracy scores (modify as needed)
+    # latency duration
     st.set_option('deprecation.showPyplotGlobalUse', False)
     latency = [39, 1.43, 26.89, 1.69,10.88,3.38,2.18]
     
-    # Model names (modify as needed)
+    
     model_names = ["SVM", "Logistic Regression", "KNN", "Naive Bayes", "Neural Network", "XGBoost", "Random Forest"]
     
     # Create the bar chart
@@ -76,7 +74,7 @@ def plot_latency():
     plt.ylabel("Duration (ms)")
     plt.title("Model Latency Comparison")
     
-    # Customize the plot (optional)
+    # Customize the plot
     plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
     plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
     for i, v in enumerate(latency):
@@ -205,7 +203,7 @@ def main():
     
     selected = option_menu(
             menu_title=None,  
-            options=["Home", "Demo", "Visualisation"], 
+            options=["Home", "Visualisation", "Demo"], 
             icons=["house", "play", "bar-chart"],  
             menu_icon="cast", 
             default_index=0, 
@@ -214,11 +212,12 @@ def main():
     if selected == "Home":
         show_home_page()
         
-    elif selected == "Demo":
-        show_demo_page()
+    elif selected == "Visualisation":
+        show_vis_page()
         
     else:
-        show_vis_page()
+        show_demo_page()
+        
 
 if __name__ == "__main__":
     main()
