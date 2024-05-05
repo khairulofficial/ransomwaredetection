@@ -83,11 +83,15 @@ def show_demo_page():
 
 def show_vis_page():
     st.title("Model Comparison")
-    st.text("Results (when all features are used for training)")
+    st.text("(when all features are used for training)")
+    st.text("")
+    st.text("")
     col1, col2, col3 = st.columns(3)
     col1.metric("Best Accuracy: :blue[Random Forest]", "100%", "Slightly better than XGBoost & Neural Network")
-    col2.metric("Best Recall: :blue[Random Forest, XGBoost]", "100%", "3% compared to Neural Network")
+    col2.metric("Best Recall: :blue[Random Forest, XGBoost]", "100%", "3% better than Neural Network")
     col3.metric("Lowest Latency: :blue[Logistic Regression]", "1.43ms", "~ 2x faster than Random Forest")
+
+    
   
 
 
