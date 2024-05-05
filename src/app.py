@@ -169,7 +169,7 @@ def show_vis_page():
     col1, col2, col3 = st.columns(3)
     col1.metric("Best Accuracy: :blue[Random Forest]", "100%", "Slightly better than XGBoost & Neural Network")
     col2.metric("Best Recall: :blue[Random Forest, XGBoost]", "100%", "3% better than Neural Network")
-    col3.metric("Lowest Latency: :blue[Logistic Regression]", "1.43ms", "~ 2x faster than Random Forest")
+    col3.metric("Lowest Latency: :blue[Logistic Regression]", "1.43ms", "~1.5x faster than Random Forest")
 
     col1, col2 = st.columns(2)
     with col1:
