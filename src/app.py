@@ -3,7 +3,6 @@ import pandas as pd
 from test import test_model
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
-from pathlib import Path
 
 def main():
 
@@ -98,10 +97,7 @@ def main():
                 st.warning("Invalid File. Please try another file.")
     elif selected == "Demo":
         st.title("Sample Goodware Demo")
-        data_dir = Path("data")
-        video_file = data_dir / "goodwaresampledemo.mp4"
-        video_bytes = video_file.read_bytes()
-        st.video(video_bytes)
+        st.video("https://drive.google.com/file/d/1S4Q4wthnKAT8mwep_u7qwH_V0sy-B93n/view?usp=drive_link")
         
     else:
         st.title("data page")
