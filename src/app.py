@@ -13,21 +13,21 @@ def plot_accuracy():
     model_names = ["SVM", "Logistic Regression", "KNN", "Naive Bayes", "Neural Network", "XGBoost", "Random Forest"]
     
     # Create the bar chart
-    fig = plt.figure(figsize=(8, 6))  # Adjust figure size as desired
-    fig.bar(model_names, accuracy_scores)
+    plt.figure(figsize=(8, 6))  # Adjust figure size as desired
+    plt.bar(model_names, accuracy_scores)
     
     # Add labels and title
-    fig.xlabel("Model")
-    fig.ylabel("Accuracy")
-    fig.title("Model Accuracy Comparison")
+    plt.xlabel("Model")
+    plt.ylabel("Accuracy")
+    plt.title("Model Accuracy Comparison")
     
     # Customize the plot (optional)
-    fig.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
-    fig.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
+    plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
+    plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
     
     # Display the plot
-    fig.tight_layout()
-    st.pyplot(fig)
+    plt.tight_layout()
+    st.pyplot()
     
 def show_home_page():
     st.title("Ransomware Detection App")
