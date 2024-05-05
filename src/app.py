@@ -3,7 +3,32 @@ import pandas as pd
 from test import test_model
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
+import matplotlib.pyplot as plt
 
+def plot_accuracy():
+    # Sample accuracy scores (modify as needed)
+    accuracy_scores = [0.70, 0.83, 0.98, 0.74,0.99,0.99,1]
+    
+    # Model names (modify as needed)
+    model_names = ["SVM", "Logistic Regression", "KNN", "Naive Bayes", "Neural Network", "XGBoost", "Random Forest"]
+    
+    # Create the bar chart
+    plt.figure(figsize=(8, 6))  # Adjust figure size as desired
+    plt.bar(model_names, accuracy_scores)
+    
+    # Add labels and title
+    plt.xlabel("Model")
+    plt.ylabel("Accuracy")
+    plt.title("Model Accuracy Comparison")
+    
+    # Customize the plot (optional)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
+    plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
+    
+    # Display the plot
+    plt.tight_layout()
+    plt.show()
+    
 def show_home_page():
     st.title("Ransomware Detection App")
         
@@ -93,9 +118,13 @@ def show_vis_page():
 
     col1, col2 = st.columns(2)
     with col1:
-        st.selectbox(
+        selection = st.selectbox(
         "Plot Bar Chart of",
         ("Accuracy", "Recall", "Latency"))
+
+    with col2:
+        if selection == "Accuracy":
+            plot_accuracy()
 
     
   
