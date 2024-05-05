@@ -69,9 +69,18 @@ def main():
                 
                 elif family == 2:
                     # display further instructions
-                    st.header(f'\nResult: This file is predicted to be a :red[Locker Ransomware]')
-                    st.write(f'\n:red[WARNING:] Please delete the original file if you have downloaded it on any machine and inform your admin')
+                    hc.info_card(title='This file is predicted to be a LOCKER RANSOMWARE', content='Please delete the original file if you have downloaded it on any machine & inform your admin', sentiment='bad',bar_value=100,theme_override=theme_bad)
+            
                 # model and file details
+                cc = st.columns(2)
+
+                with cc[0]:
+                    hc.info_card(title='Model:', content=f'{model}', sentiment='neutral',bar_value=100)
+                
+                with cc[1]:
+                    hc.info_card(title='Accuracy:', content=f'{cvscore:.2%}', sentiment='neutral',bar_value=100)
+                
+            
                 st.write(f"Model: {model}")
                 st.write("Accuracy: ",f"{cvscore:.2%}")
                 
