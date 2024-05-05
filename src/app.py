@@ -97,11 +97,11 @@ def main():
     st.set_page_config(layout="wide", page_icon=image_url, page_title = "Ransomware Detection App")
     
     selected = option_menu(
-            menu_title=None,  # required
-            options=["Home", "Demo", "Visualisation"],  # required
-            icons=["house", "book", "envelope"],  # optional
-            menu_icon="cast",  # optional
-            default_index=0,  # optional
+            menu_title=None,  
+            options=["Home", "Demo", "Visualisation"], 
+            icons=["house", "video-camera", "bar-chart"],  
+            menu_icon="cast", 
+            default_index=0, 
             orientation="horizontal",)
     
     if selected == "Home":
