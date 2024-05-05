@@ -19,6 +19,8 @@ def main():
     
 
 
+
+
     
     """)
     st.markdown("""
@@ -39,6 +41,10 @@ def main():
     st.sidebar.markdown(html_img, unsafe_allow_html=True)
     
     # upload file
+     st.markdown("""
+
+    
+    """)
     test_file = st.sidebar.file_uploader(label="Upload Generated CSV File", type="csv", accept_multiple_files=False)
             
     if test_file:
