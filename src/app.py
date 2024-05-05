@@ -63,15 +63,15 @@ def main():
                             
                 # display prediction
                 if family == 0:
-                    hc.info_card(title='This file is predicted to be a GOODWARE', sentiment='good',theme_override=theme_good)
+                    hc.info_card(title='This file is predicted to be a: \nGOODWARE', sentiment='good',theme_override=theme_good)
                 
                 elif family == 1:
                     # display further instructions
-                    hc.info_card(title='This file is predicted to be an ENCRYPTOR RANSOMWARE', content='Please delete the original file if you have downloaded it on any machine & inform your admin', sentiment='bad',theme_override=theme_bad)
+                    hc.info_card(title='This file is predicted to be an: \nENCRYPTOR RANSOMWARE', content='Please delete the original file if you have downloaded it on any machine & inform your admin', sentiment='bad',theme_override=theme_bad)
                 
                 elif family == 2:
                     # display further instructions
-                    hc.info_card(title='This file is predicted to be a LOCKER RANSOMWARE', content='Please delete the original file if you have downloaded it on any machine & inform your admin', sentiment='bad',theme_override=theme_bad)
+                    hc.info_card(title='This file is predicted to be a: \nLOCKER RANSOMWARE', content='Please delete the original file if you have downloaded it on any machine & inform your admin', sentiment='bad',theme_override=theme_bad)
             
                 # model and file details
                 cc = st.columns(2)
@@ -80,7 +80,7 @@ def main():
                     hc.info_card(title='Model:', content=f'{model}', sentiment='neutral', theme_override=theme_model)
                 
                 with cc[1]:
-                    hc.info_card(title='Accuracy:', content=f'{cvscore:.2%}', sentiment='neutral',bar_value=cvscore, theme_override=theme_accuracy)
+                    hc.info_card(title='Accuracy:', content=f'{cvscore:.2%}', sentiment='neutral', theme_override=theme_accuracy)
                 
                 
         except:
