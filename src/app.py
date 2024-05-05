@@ -25,6 +25,8 @@ def plot_accuracy():
     # Customize the plot (optional)
     plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add gridlines
     plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
+    for i, v in enumerate(accuracy_scores):
+        plt.text(i, v + 0.01, f"{v:.2f}", ha='center', va='bottom')
     
     # Display the plot
     plt.tight_layout()
