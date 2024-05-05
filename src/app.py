@@ -17,6 +17,8 @@ def main():
     # instructions
     st.markdown("""
     
+
+
     
     """)
     st.markdown("""
@@ -26,7 +28,15 @@ def main():
     """)
     
     # Load image
-    st.sidebar.image(image_url)
+    # st.sidebar.image(image_url)
+    html_img = """
+    <div style="text-align: center;">
+    <img src=image_url alt="My Image" style="border-radius: 50%; width: 100px; height: 100px;">
+    </div>
+    """
+
+    # Display the HTML in the sidebar with unsafe_allow_html
+    st.sidebar.markdown(html_img, unsafe_allow_html=True)
     
     # upload file
     test_file = st.sidebar.file_uploader(label="Upload Generated CSV File", type="csv", accept_multiple_files=False)
