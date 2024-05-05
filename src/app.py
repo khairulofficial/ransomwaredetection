@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from PIL import Image
 from test import test_model
 
 def main():
@@ -27,9 +26,7 @@ def main():
     """)
     
     # Load image
-    image = Image.open(image_url)
-    new_image = image.resize((100, 100))
-    st.sidebar.image(new_image)
+    st.sidebar.image(image_url)
     
     # upload file
     test_file = st.sidebar.file_uploader(label="Upload Generated CSV File", type="csv", accept_multiple_files=False)
