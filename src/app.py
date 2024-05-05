@@ -59,7 +59,7 @@ def main():
                 theme_bad = {'bgcolor': '#FFF0F0','title_color': 'red','content_color': 'red','icon_color': 'red', 'icon': 'fa fa-times-circle'}
                 theme_good = {'bgcolor': '#EFF8F7','title_color': 'green','content_color': 'green','icon_color': 'green', 'icon': 'fa fa-check-circle'}
                 theme_model = {'bgcolor': '#f9f9f9','title_color': 'orange','content_color': 'orange','icon_color': 'orange', 'icon': 'fa fa-database'}
-                theme_model = {'bgcolor': '#f9f9f9','title_color': 'orange','content_color': 'orange','icon_color': 'orange', 'icon': 'fa fa-percent'}
+                theme_accuracy = {'bgcolor': '#f9f9f9','title_color': 'orange','content_color': 'orange','icon_color': 'orange', 'icon': 'fa fa-percent'}
                             
                 # display prediction
                 if family == 0:
@@ -77,10 +77,10 @@ def main():
                 cc = st.columns(2)
 
                 with cc[0]:
-                    hc.info_card(title='Model:', content=f'{model}', sentiment='neutral',bar_value=100)
+                    hc.info_card(title='Model:', content=f'{model}', sentiment='neutral',bar_value=100, theme_override=theme_model)
                 
                 with cc[1]:
-                    hc.info_card(title='Accuracy:', content=f'{cvscore:.2%}', sentiment='neutral',bar_value=100)
+                    hc.info_card(title='Accuracy:', content=f'{cvscore:.2%}', sentiment='neutral',bar_value=100, theme_override=theme_accuracy)
                 
                 
         except:
