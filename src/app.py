@@ -61,13 +61,13 @@ def main():
                             
                 # display prediction
                 if family == 0:
-                    hc.info_card(title='This file is predicted to be a Goodware', content='All good!', sentiment='good',bar_value=100)
+                    hc.info_card(title='This file is predicted to be a GOODWARE', content='All good!', sentiment='good',bar_value=100,theme_override=theme_good)
                 
                     # st.header(f'\nResult: This file is predicted to be a :green[Goodware]')
                 
                 if family == 1:
                     # display further instructions
-                    hc.info_card(title='This file is predicted to be a :red[Encryptor Ransomware]', content='Please delete the original file if you have downloaded it on any machine and inform your admin', sentiment='bad',bar_value=100)
+                    hc.info_card(title='This file is predicted to be a ENCRYPTOR RANSOMWARE', content='Please delete the original file if you have downloaded it on any machine & inform your admin', sentiment='bad',bar_value=100,theme_override=theme_bad)
                 
                     
                     # st.header(f'\nResult: This file is predicted to be a :red[Encryptor Ransomware]')
