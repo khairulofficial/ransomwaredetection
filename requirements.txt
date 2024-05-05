@@ -1,4 +1,4 @@
 scikit-learn
 pandas
 streamlit
-st-card
+st_card
