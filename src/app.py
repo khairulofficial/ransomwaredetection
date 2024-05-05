@@ -63,7 +63,7 @@ def main():
                             
                 # display prediction
                 if family == 0:
-                    hc.info_card(title='This file is predicted to be a GOODWARE', sentiment='good',bar_value=100,theme_override=theme_good)
+                    hc.info_card(title='This file is predicted to be a GOODWARE', sentiment='good',theme_override=theme_good)
                 
                 elif family == 1:
                     # display further instructions
