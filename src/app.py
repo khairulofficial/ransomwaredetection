@@ -96,7 +96,7 @@ def main():
             except:
                 st.warning("Invalid File. Please try another file.")
     elif selected == "Demo":
-        st.title("Sample Goodware Demo")
+        st.title("goodwaresampledemo")
         video_file = open('data/goodwaredemo.mp4', 'rb')
         video_bytes = video_file.read()
         st.video(video_bytes)
