@@ -186,10 +186,6 @@ def show_vis_page():
             plot_latency()
 
     
-  
-
-
-    
 def main():
 
     # page config
@@ -204,7 +200,7 @@ def main():
     selected = option_menu(
             menu_title=None,  
             options=["Home", "Visualisation", "Demo"], 
-            icons=["house", "play", "bar-chart"],  
+            icons=["house", "bar-chart", "play"],  
             menu_icon="cast", 
             default_index=0, 
             orientation="horizontal",)
