@@ -3,4 +3,3 @@ pandas
 streamlit
 hydralit_components
 streamlit_option_menu
-pathlib
