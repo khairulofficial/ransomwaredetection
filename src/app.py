@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 def plot_accuracy():
     # Sample accuracy scores (modify as needed)
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     accuracy_scores = [0.70, 0.83, 0.98, 0.74,0.99,0.99,1]
     
     # Model names (modify as needed)
