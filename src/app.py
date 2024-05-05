@@ -15,10 +15,9 @@ def main():
     st.title("Ransomware Detection Web App")
     
     # instructions
-    st.text("")
-    st.text("")
-    st.text("")
-    st.text("")
+    st.sidebar.text("")
+    st.sidebar.text("")
+ 
     st.markdown("""
     1. Click "Browse File" to upload the generated csv file. You can download the sample files from [Github](https://github.com/khairulofficial/ransomwaredetection/tree/main/sample%20files) 
     2. Select machine learning model. If unsure, please use recommended model.
