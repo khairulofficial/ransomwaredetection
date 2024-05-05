@@ -16,19 +16,10 @@ def main():
     
     # instructions
     st.markdown("""
-    
 
+    """)
+    st.markdown("""
 
-
-
-
-
-
-
-
-
-
-    
     """)
     st.markdown("""
     1. Click "Browse File" to upload the generated csv file. You can download the sample files from [Github](https://github.com/khairulofficial/ransomwaredetection/tree/main/sample%20files) 
@@ -47,10 +38,13 @@ def main():
     # Display the HTML in the sidebar with unsafe_allow_html
     st.sidebar.markdown(html_img, unsafe_allow_html=True)
     
-    # upload file
     st.markdown("""
     
     """)
+    st.markdown("""
+
+    """)
+    # upload file
     test_file = st.sidebar.file_uploader(label="Upload Generated CSV File", type="csv", accept_multiple_files=False)
             
     if test_file:
