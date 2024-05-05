@@ -91,9 +91,11 @@ def show_vis_page():
     col2.metric("Best Recall: :blue[Random Forest, XGBoost]", "100%", "3% better than Neural Network")
     col3.metric("Lowest Latency: :blue[Logistic Regression]", "1.43ms", "~ 2x faster than Random Forest")
 
-    st.selectbox(
-    "Plot Bar Chart of",
-    ("Accuracy", "Recall", "Latency"))
+    col1, col2 = st.columns(2)
+    with col1:
+        st.selectbox(
+        "Plot Bar Chart of",
+        ("Accuracy", "Recall", "Latency"))
 
     
   
