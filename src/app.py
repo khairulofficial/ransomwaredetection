@@ -156,7 +156,13 @@ def show_home_page():
                 
         except:
             st.warning("Invalid File. Please try another file.")
-                
+    footer_text = """
+<div style="text-align: center; padding: 10px; font-size: 12px;">
+    Developed by Khairul © 2024
+</div>
+"""
+    st.markdown(footer_text, unsafe_allow_html=True)
+        
 def show_demo_page():
     st.title("Sample Goodware Demo")
     st.video("https://youtu.be/DOjKgGNEQ5A")
