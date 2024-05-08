@@ -177,10 +177,10 @@ def show_vis_page():
     with col1:
         selection = st.selectbox(
         "Plot Bar Chart of",
-        ("Accuracy (10-fold cross validation average)", "Recall", "Latency"))
+        ("Accuracy (10-fold cross-validation average)", "Recall", "Latency (10 prediction average)"))
 
     with col2:
-        if selection == "Accuracy":
+        if selection == "Accuracy (10-fold cross-validation average)":
             plot_accuracy()
         elif selection == "Recall":
             plot_recall()
