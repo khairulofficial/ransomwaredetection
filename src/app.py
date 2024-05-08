@@ -110,23 +110,7 @@ def show_home_page():
     
     st.sidebar.text("")
     st.sidebar.text("")
-    footer_text = """
-<style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-        font-size: 12px;
-    }
-</style>
-<div class="footer">
-    Developed by Khairul © 2024
-</div>
-"""
-    st.sidebar.markdown(footer_text, unsafe_allow_html=True)
+    
     
     # upload file
     test_file = st.sidebar.file_uploader(label="Upload Generated CSV File", type="csv", accept_multiple_files=False)
@@ -173,23 +157,7 @@ def show_home_page():
                 
         except:
             st.warning("Invalid File. Please try another file.")
-    footer_text = """
-<style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-        font-size: 12px;
-    }
-</style>
-<div class="footer">
-    Developed by Khairul © 2024
-</div>
-"""
-    st.markdown(footer_text, unsafe_allow_html=True)
+    
         
 def show_demo_page():
     st.title("Sample Goodware Demo")
