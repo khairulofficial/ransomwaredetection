@@ -157,7 +157,7 @@ def show_home_page():
         except:
             st.warning("Invalid File. Please try another file.")
     footer_text = """
-<div style="text-align: center; padding: 10px; font-size: 12px;">
+<div style="text-align: center; margin_bottom: 0px; font-size: 12px;">
     Developed by Khairul © 2024
 </div>
 """
