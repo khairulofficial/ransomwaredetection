@@ -188,7 +188,7 @@ def show_vis_page():
             plot_latency()
 
 def show_about_page():
-
+    pass
     
 def main():
 
