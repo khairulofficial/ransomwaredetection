@@ -187,6 +187,8 @@ def show_vis_page():
         else:
             plot_latency()
 
+def show_about_page():
+
     
 def main():
 
@@ -201,8 +203,8 @@ def main():
     
     selected = option_menu(
             menu_title=None,  
-            options=["Home", "Visualisation", "Demo"], 
-            icons=["house", "bar-chart", "play"],  
+            options=["Home", "Visualisation", "About", "Demo"], 
+            icons=["house", "bar-chart", "info", "play"],  
             menu_icon="cast", 
             default_index=0, 
             orientation="horizontal",)
@@ -212,6 +214,9 @@ def main():
         
     elif selected == "Visualisation":
         show_vis_page()
+
+     elif selected == "About":
+        show_about_page()
         
     else:
         show_demo_page()
