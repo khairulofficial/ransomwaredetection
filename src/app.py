@@ -215,7 +215,7 @@ def main():
     elif selected == "Visualisation":
         show_vis_page()
 
-     elif selected == "About":
+    elif selected == "About":
         show_about_page()
         
     else:
