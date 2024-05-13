@@ -26,6 +26,7 @@ Note:
 ![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/bb62cb30-bf2b-420b-bef0-1a8176444c14)
 
 - Video demo of web app
+
 [![Video Title](https://img.youtube.com/vi/DOjKgGNEQ5A/0.jpg)](https://youtu.be/DOjKgGNEQ5A)
 
 ## Feedback and Extensions
