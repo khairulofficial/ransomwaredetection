@@ -20,10 +20,12 @@ Note:
 - Upload the sample files. Sample files refer to the files that users can upload into the web app. It does not refer to files for unit testing. For instance, we can experiment with a use case where the user wants to only determine the outcome of the file using only 2 features instead of 50 features. The ground truth of the file is denoted in the file name e.g. Sample Goodware 2 features means this is non-malicious file with 2 features.
 - Next, based on analysis from the notebook, I recommend users to select Random Forest as the top performing model. However, users can play around and choose other models. This flexibility is offered to give users an experience of how users in SMEs can choose their model based on company requirements. For instance, so companies may not prioritise accuracy but rather low latency or computing costs. Hence simpler models such as Logistic Regression can be choosen. 
 - This is how the web application interface looks like upon running the Streamlit app
-![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/55ed7333-e38c-4eb6-9eb1-ead4813d4a9d)
+![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/9a2893b7-ec84-487a-b2b7-1db1a107b2f7)
+
 
 - This is how the interface looks like once prediction is displayed
-![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/bb62cb30-bf2b-420b-bef0-1a8176444c14)
+![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/aadb929f-b128-448f-b9f4-4267799324a7)
+
 
 - Video demo of web app
 
