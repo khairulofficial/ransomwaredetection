@@ -1,11 +1,16 @@
+# Ransomware Detection in Small & Medium Enterprises using Machine Learning
+
+## Background
 This project is regarding using machine learning for ransomware detection in Small & Medium Enterprises (SMEs). SMEs do not have the luxury of time, manpower and resources to collect, process and analyse all features of a ransomware. As such, this projects acts as triage where we utilise the minimum number of features possible while still maintaining an accuracy score of at least 90% for our top model. This project is inspired by Juan A. Herrera-Silva and Myriam Hernández-Álvarezhtt's paper titled Dynamic Feature Dataset for Ransomware Detection Using Machine Learning Algorithms (www.mdpi.com/1424-8220/23/3/1053)
 
+## Project Structure
 This project contains 4 main files:
 1) Ransomware Training Dataset (under src/data)
 2) Notebook for Analysis 
 3) Code for Streamlit Web Application (under src)
 4) Various sample files for prediction in the Streamlit Web Application
 
+## Data and Instruction Details
 Note:
 - The training dataset collected by the reserachers above has 50 features
 - Ensure that files are downloaded into the same folder as the notebook/web app that you are running. Many data source errors in data science projects arise due to dataset being downloaded directly into "Downloads" instead of the same folder as the notebook/web app.
@@ -21,8 +26,9 @@ Note:
 ![image](https://github.com/khairulofficial/ransomwaredetection/assets/59458479/bb62cb30-bf2b-420b-bef0-1a8176444c14)
 
 - Video demo of web app
+[![Video Title](https://img.youtube.com/vi/DOjKgGNEQ5A/0.jpg)](https://youtu.be/DOjKgGNEQ5A)
 
-
+## Feedback and Extensions
 - Feedback from professors who visited my project booth which can be a learning point for all of us: Higlight the prediction based on severity e.g. red for ransomware, green for goodware to help users notice easily. The dataset, obtained by paid researchers, may not be the best dataset as they have carried out encoding hence limiting interpretablity. (Note: I have incorporated the first feedback where colors are reflected based on predicted file category)
 - To be updated: I will add in more explanation with regards to the paper by the researcher itself. 
 
