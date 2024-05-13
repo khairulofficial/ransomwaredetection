@@ -190,7 +190,8 @@ def show_vis_page():
 
 
 def show_about_page():
-    st.header("Ask about the project...Feature Coming Soon!")
+    st.title("Ask our chatbot about the project!")
+    st.text("Feature coming soon in end May")
 
     
 def main():
