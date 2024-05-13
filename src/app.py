@@ -4,6 +4,8 @@ from test import test_model
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 import matplotlib.pyplot as plt
+
+"""--------------------------------------------- In development ------------------------------------------------------------
 import pickle
 from PyPDF2 import PdfReader
 from streamlit_extras.add_vertical_space import add_vertical_space
@@ -14,6 +16,7 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
 import os
+"""
 
 def plot_accuracy():
     # accuracy scores 
@@ -197,9 +200,10 @@ def show_vis_page():
         else:
             plot_latency()
 
+
 def show_about_page():
-    st.header("Ask about the project")
- 
+    st.header("Ask about the project...Feature Coming Soon!")
+"""--------------------------------------------- In development ------------------------------------------------------------
  
     # upload a PDF file
     pdf = st.file_uploader("Upload your PDF", type='pdf')
@@ -249,6 +253,7 @@ def show_about_page():
                 response = chain.run(input_documents=docs, question=query)
                 print(cb)
             st.write(response)
+"""
         
     
 def main():
@@ -264,8 +269,8 @@ def main():
     
     selected = option_menu(
             menu_title=None,  
-            options=["Home", "Visualisation", "About", "Demo"], 
-            icons=["house", "bar-chart", "info", "play"],  
+            options=["Home", "Visualisation", "Demo", "About"], 
+            icons=["house", "bar-chart", "play", "info"],  
             menu_icon="cast", 
             default_index=0, 
             orientation="horizontal",)
@@ -276,11 +281,12 @@ def main():
     elif selected == "Visualisation":
         show_vis_page()
 
-    elif selected == "About":
-        show_about_page()
-        
-    else:
+    elif selected == "Demo":
         show_demo_page()
+
+    else:
+        show_about_page()       
+        
         
 
 if __name__ == "__main__":
