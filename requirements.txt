@@ -4,8 +4,3 @@ streamlit
 hydralit_components
 streamlit_option_menu
 matplotlib
-pickle
-PyPDF2
-streamlit_extras
-langchain
-os
