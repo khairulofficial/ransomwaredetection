@@ -17,6 +17,11 @@ import pickle
 from streamlit_extras.add_vertical_space import add_vertical_space
 
 
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.vectorstores import Chroma
+from langchain.chains import RetrievalQA
+
+
 
 
 def plot_accuracy():
