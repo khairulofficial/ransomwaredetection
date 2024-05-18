@@ -251,7 +251,7 @@ def show_about_page():
     query_text = st.text_input('Enter your question:', placeholder='Ask a question about our project')
     
     # Form submission and response display
-    if uploaded_file is not None and query_text:
+    if query_text:
       with st.spinner('Thinking...'):
         try:
           # Decode uploaded file (assuming UTF-8 encoding)
