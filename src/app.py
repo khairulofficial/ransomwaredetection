@@ -102,27 +102,33 @@ def plot_latency():
     # Display the plot
     plt.tight_layout()
     st.pyplot()
+    
+# Replace with your actual OpenAI API key (store securely using environment variables)
+openai_api_key = "YOUR_OPENAI_API_KEY"
 
-def generate_response(uploaded_file, openai_api_key, query_text):
-    # Load document if file is uploaded
-    if uploaded_file is not None:
-        try:
-          documents = [uploaded_file.read().decode('utf-8')]
-        except UnicodeDecodeError:
-          st.error("Error decoding file. Please upload a text file with UTF-8 encoding or choose the appropriate encoding from the options below.")
-          # Add dropdown menu for encoding selection (optional)
-        # Split documents into chunks
-        text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-        texts = text_splitter.create_documents(documents)
-        # Select embeddings
-        embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
-        # Create a vectorstore from documents
-        db = Chroma.from_documents(texts, embeddings)
-        # Create retriever interface
-        retriever = db.as_retriever()
-        # Create QA chain
-        qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
-        return qa.run(query_text)
+def generate_response(documents, query_text):
+  """
+  This function processes uploaded documents, generates embeddings,
+  and uses retrieval-based QA to answer the user's query.
+  """
+  # Split documents into chunks
+  text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+  texts = text_splitter.create_documents(documents)
+
+  # Select embeddings
+  embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+
+  # Create a vectorstore from documents
+  db = Chroma.from_documents(texts, embeddings)
+
+  # Create retriever interface
+  retriever = db.as_retriever()
+
+  # Create QA chain
+  qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
+
+  # Run the QA model and return the answer
+  return qa.run(query_text)
     
 def show_home_page():
     st.title("Ransomware Detection App")
@@ -229,30 +235,25 @@ def show_vis_page():
 
 
 def show_about_page():
-    st.title("Ask our chatbot about the project!")
-    st.text("Feature coming soon in end May")
-    
-    
-    st.title('🦜🔗 Ask the Doc App')
 
+    st.title('❓ LLM Question & Answer App')
+    
     # File upload
-    uploaded_file = st.file_uploader('Upload an article', type='txt')
-    # Query text
-    query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_file)
+    uploaded_file = st.file_uploader('Upload a document (txt)', type='txt')
     
-    # Form input and query
-    result = []
-    with st.form('myform', clear_on_submit=True):
-        openai_api_key = st.text_input('OpenAI API Key', type='password', disabled=not (uploaded_file and query_text))
-        submitted = st.form_submit_button('Submit', disabled=not(uploaded_file and query_text))
-        if submitted and openai_api_key.startswith('sk-'):
-            with st.spinner('Calculating...'):
-                response = generate_response(uploaded_file, openai_api_key, query_text)
-                result.append(response)
-                del openai_api_key
+    # Query text input
+    query_text = st.text_input('Enter your question:', placeholder='Ask a question about the uploaded document')
     
-    if len(result):
-        st.info(response)
+    # Form submission and response display
+    if uploaded_file is not None and query_text:
+      with st.spinner('Thinking...'):
+        try:
+          # Decode uploaded file (assuming UTF-8 encoding)
+          documents = [uploaded_file.read().decode('utf-8')]
+          response = generate_response(documents, query_text)
+          st.success(f"Answer: {response}")
+        except Exception as e:
+          st.error(f"An error occurred: {e}")
    
 
     
