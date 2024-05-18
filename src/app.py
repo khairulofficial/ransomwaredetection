@@ -4,6 +4,13 @@ from test import test_model
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 import matplotlib.pyplot as plt
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.embeddings.openai import OpenAIEmbeddings 
+from langchain.vectorstores import FAISS
+from langchain.llms import OpenAI
+from langchain.chains.question_answering import load_qa_chain
+from langchain.callbacks import get_openai_callback
+import os
 
 
 def plot_accuracy():
@@ -192,6 +199,40 @@ def show_vis_page():
 def show_about_page():
     st.title("Ask our chatbot about the project!")
     st.text("Feature coming soon in end May")
+    st.header("Chat with PDF ")
+
+    # upload a PDF file
+    pdf = st.file_uploader("Upload your PDF", type='pdf')
+
+    if pdf is not None:
+        pdf_reader = PdfReader(pdf)
+
+        text = ""
+        for page in pdf_reader.pages:
+            text += page.extract_text()
+
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000,
+            chunk_overlap=200,
+            length_function=len
+        )
+        chunks = text_splitter.split_text(text=text)
+
+        # Embeddings with OpenAI (assuming your API key is set as a secret)
+        embeddings = OpenAIEmbeddings(api_key=os.environ.get("OPENAI_API_KEY"))
+        VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
+
+        # Accept user questions/query
+        query = st.text_input("Ask questions about your PDF file:")
+
+        if query:
+            docs = VectorStore.similarity_search(query=query, k=3)
+
+            llm = OpenAI()
+            chain = load_qa_chain(llm=llm, chain_type="stuff")
+            with get_openai_callback() as cb:
+                response = chain.run(input_documents=docs, question=query)
+                st.write(response)
 
     
 def main():
