@@ -51,7 +51,7 @@ def plot_accuracy():
     st.pyplot()
 
 def plot_recall():
-     """
+    """
     Plots bar charts of recall scores
     """
     # recall scores
