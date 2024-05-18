@@ -106,7 +106,11 @@ def plot_latency():
 def generate_response(uploaded_file, openai_api_key, query_text):
     # Load document if file is uploaded
     if uploaded_file is not None:
-        documents = [uploaded_file.read().decode()]
+        try:
+          documents = [uploaded_file.read().decode('utf-8')]
+        except UnicodeDecodeError:
+          st.error("Error decoding file. Please upload a text file with UTF-8 encoding or choose the appropriate encoding from the options below.")
+          # Add dropdown menu for encoding selection (optional)
         # Split documents into chunks
         text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
         texts = text_splitter.create_documents(documents)
@@ -234,7 +238,6 @@ def show_about_page():
     # File upload
     uploaded_file = st.file_uploader('Upload an article', type='txt')
     # Query text
-    uploaded_file = uploaded_file.read().decode('utf-8')
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_file)
     
     # Form input and query
