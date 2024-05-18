@@ -259,7 +259,7 @@ def show_about_page():
           response = generate_response(documents, query_text)
           st.success(f"Answer: {response}")
         except Exception as e:
-            st.text("""This feature is coming soon by end May. Stay tuned for updates! Meanwhile, here is more information about our project. 
+            st.markdown("""This feature is coming soon by end May. Stay tuned for updates! Meanwhile, here is more information about our project. 
 
 Small and medium-sized enterprises (SMEs) are highly vulnerable to ransomware attacks. Facing budget and resource constraints, SMEs may not be equipped with the most sophisticated anti-ransomware technologies to detect and prevent ransomware attacks as such technologies can be costly. Even if there is a certain level of anti-ransomware detection system in place, this is most likely a basic traditional system that may not capture new variants of ransomware. This project explores the implementation of machine learning for ransomware detection using free and open-source tools in order to address the constraints aforementioned. 
 
@@ -267,6 +267,7 @@ In this project, we explore using lesser features which will result in less reso
 
 This app allows users in SMEs to obtain a prediction on whether a certain file is a ransomware or otherwise. Hence, SMEs are now able to adopt low-cost machine learning-based ransomware detection systems as alternatives to both conventional systems and costly options. This enhances their protection against ransomware.
 """) 
+        
           # st.error(f"An error occurred: {e}")
    
 
