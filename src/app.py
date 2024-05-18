@@ -12,7 +12,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
 import os
 from PyPDF2 import PdfReader
-from streamlit_extras.add_vertical_space import add_vertical_space
+
 
 
 def plot_accuracy():
@@ -222,6 +222,10 @@ def show_about_page():
 
         # Embeddings with OpenAI (assuming your API key is set as a secret)
         embeddings = OpenAIEmbeddings(api_key=os.environ.get("OPENAI_API_KEY"))
+        st.write(os.environ.get("OPENAI_API_KEY"))
+
+pen_spark
+
         VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
 
         # Accept user questions/query
