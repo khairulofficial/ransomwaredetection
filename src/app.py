@@ -205,12 +205,12 @@ def show_vis_page():
 def show_about_page():
     st.title("Ask our chatbot about the project!")
     st.text("Feature coming soon in end May")
+    
+    st.header("Chat with PDF ")
+
+    # upload a PDF file
+    pdf = st.file_uploader("Upload your PDF", type='pdf')
     try:
-        st.header("Chat with PDF ")
-    
-        # upload a PDF file
-        pdf = st.file_uploader("Upload your PDF", type='pdf')
-    
         if pdf is not None:
             pdf_reader = PdfReader(pdf)
     
@@ -243,12 +243,6 @@ def show_about_page():
                     response = chain.run(input_documents=docs, question=query)
                     st.write(response)
     except:
-        st.header("Chat with PDF 💬")
- 
- 
-        # upload a PDF file
-        pdf = st.file_uploader("Upload your PDF", type='pdf')
-     
         # st.write(pdf)
         if pdf is not None:
             pdf_reader = PdfReader(pdf)
