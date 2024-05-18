@@ -259,7 +259,7 @@ def show_about_page():
           response = generate_response(documents, query_text)
           st.success(f"Answer: {response}")
         except Exception as e:
-            st.text("This feature is coming soon") 
+            st.text("This feature is coming soon by end May. Stay tuned for updates!") 
           # st.error(f"An error occurred: {e}")
    
 
