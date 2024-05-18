@@ -224,8 +224,6 @@ def show_about_page():
         embeddings = OpenAIEmbeddings(api_key=os.environ.get("OPENAI_API_KEY"))
         st.write(os.environ.get("OPENAI_API_KEY"))
 
-pen_spark
-
         VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
 
         # Accept user questions/query
