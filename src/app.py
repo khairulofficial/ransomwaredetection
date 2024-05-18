@@ -12,6 +12,10 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
 import os
 from PyPDF2 import PdfReader
+from dotenv import load_dotenv
+import pickle
+from streamlit_extras.add_vertical_space import add_vertical_space
+
 
 
 
@@ -201,42 +205,97 @@ def show_vis_page():
 def show_about_page():
     st.title("Ask our chatbot about the project!")
     st.text("Feature coming soon in end May")
-    st.header("Chat with PDF ")
-
-    # upload a PDF file
-    pdf = st.file_uploader("Upload your PDF", type='pdf')
-
-    if pdf is not None:
-        pdf_reader = PdfReader(pdf)
-
-        text = ""
-        for page in pdf_reader.pages:
-            text += page.extract_text()
-
-        text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=1000,
-            chunk_overlap=200,
-            length_function=len
-        )
-        chunks = text_splitter.split_text(text=text)
-
-        # Embeddings with OpenAI (assuming your API key is set as a secret)
-        embeddings = OpenAIEmbeddings(api_key=os.environ.get("OPENAI_API_KEY"))
-        st.write(os.environ.get("OPENAI_API_KEY"))
-
-        VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
-
-        # Accept user questions/query
-        query = st.text_input("Ask questions about your PDF file:")
-
-        if query:
-            docs = VectorStore.similarity_search(query=query, k=3)
-
-            llm = OpenAI()
-            chain = load_qa_chain(llm=llm, chain_type="stuff")
-            with get_openai_callback() as cb:
-                response = chain.run(input_documents=docs, question=query)
+    try:
+        st.header("Chat with PDF ")
+    
+        # upload a PDF file
+        pdf = st.file_uploader("Upload your PDF", type='pdf')
+    
+        if pdf is not None:
+            pdf_reader = PdfReader(pdf)
+    
+            text = ""
+            for page in pdf_reader.pages:
+                text += page.extract_text()
+    
+            text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=1000,
+                chunk_overlap=200,
+                length_function=len
+            )
+            chunks = text_splitter.split_text(text=text)
+    
+            # Embeddings with OpenAI (assuming your API key is set as a secret)
+            embeddings = OpenAIEmbeddings(api_key=os.environ.get("OPENAI_API_KEY"))
+            st.write(os.environ.get("OPENAI_API_KEY"))
+    
+            VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
+    
+            # Accept user questions/query
+            query = st.text_input("Ask questions about your PDF file:")
+    
+            if query:
+                docs = VectorStore.similarity_search(query=query, k=3)
+    
+                llm = OpenAI()
+                chain = load_qa_chain(llm=llm, chain_type="stuff")
+                with get_openai_callback() as cb:
+                    response = chain.run(input_documents=docs, question=query)
+                    st.write(response)
+    except ValidationError:
+        st.header("Chat with PDF 💬")
+ 
+ 
+        # upload a PDF file
+        pdf = st.file_uploader("Upload your PDF", type='pdf')
+     
+        # st.write(pdf)
+        if pdf is not None:
+            pdf_reader = PdfReader(pdf)
+            
+            text = ""
+            for page in pdf_reader.pages:
+                text += page.extract_text()
+     
+            text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=1000,
+                chunk_overlap=200,
+                length_function=len
+                )
+            chunks = text_splitter.split_text(text=text)
+     
+            # # embeddings
+            store_name = pdf.name[:-4]
+            st.write(f'{store_name}')
+            # st.write(chunks)
+     
+            if os.path.exists(f"{store_name}.pkl"):
+                with open(f"{store_name}.pkl", "rb") as f:
+                    VectorStore = pickle.load(f)
+                # st.write('Embeddings Loaded from the Disk')s
+            else:
+                embeddings = OpenAIEmbeddings()
+                VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
+                with open(f"{store_name}.pkl", "wb") as f:
+                    pickle.dump(VectorStore, f)
+     
+            # embeddings = OpenAIEmbeddings()
+            # VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
+     
+            # Accept user questions/query
+            query = st.text_input("Ask questions about your PDF file:")
+            # st.write(query)
+     
+            if query:
+                docs = VectorStore.similarity_search(query=query, k=3)
+     
+                llm = OpenAI()
+                chain = load_qa_chain(llm=llm, chain_type="stuff")
+                with get_openai_callback() as cb:
+                    response = chain.run(input_documents=docs, question=query)
+                    print(cb)
                 st.write(response)
+
 
     
 def main():
