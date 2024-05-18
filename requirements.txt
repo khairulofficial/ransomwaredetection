@@ -10,3 +10,5 @@ python-dotenv
 faiss-cpu
 streamlit-extras
 openai
+chromadb
+tiktoken
