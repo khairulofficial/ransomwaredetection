@@ -22,7 +22,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 
 
 def plot_accuracy():
-      """
+    """
     Plots bar charts of 10-fold accuracy scores
     """
     # accuracy scores 
