@@ -234,7 +234,7 @@ def show_about_page():
     # File upload
     uploaded_file = st.file_uploader('Upload an article', type='txt')
     # Query text
-    uploaded_file = [uploaded_file.read().decode('utf-8')]
+    uploaded_file = uploaded_file.read().decode('utf-8')
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_file)
     
     # Form input and query
