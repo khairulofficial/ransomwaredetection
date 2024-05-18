@@ -242,7 +242,7 @@ def show_about_page():
                 with get_openai_callback() as cb:
                     response = chain.run(input_documents=docs, question=query)
                     st.write(response)
-    except ValidationError:
+    except:
         st.header("Chat with PDF 💬")
  
  
