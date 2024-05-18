@@ -20,6 +20,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
+import pysqlite3 
 
 
 
@@ -103,8 +104,8 @@ def plot_latency():
     plt.tight_layout()
     st.pyplot()
     
-# Replace with your actual OpenAI API key (store securely using environment variables)
-openai_api_key = "YOUR_OPENAI_API_KEY"
+
+openai_api_key = "OPENAI_API_KEY"
 
 def generate_response(documents, query_text):
   """
