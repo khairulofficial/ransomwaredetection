@@ -10,6 +10,10 @@ from langchain.vectorstores import FAISS
 from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.vectorstores import Chroma
+from langchain.chains import RetrievalQA
+import pysqlite3 
 import os
 from PyPDF2 import PdfReader
 from dotenv import load_dotenv
@@ -17,15 +21,10 @@ import pickle
 from streamlit_extras.add_vertical_space import add_vertical_space
 
 
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import Chroma
-from langchain.chains import RetrievalQA
-import pysqlite3 
-
-
-
-
 def plot_accuracy():
+      """
+    Plots bar charts of 10-fold accuracy scores
+    """
     # accuracy scores 
     st.set_option('deprecation.showPyplotGlobalUse', False)
     accuracy_scores = [70, 83, 98, 74,99,99,100]
@@ -52,6 +51,9 @@ def plot_accuracy():
     st.pyplot()
 
 def plot_recall():
+     """
+    Plots bar charts of recall scores
+    """
     # recall scores
     st.set_option('deprecation.showPyplotGlobalUse', False)
     recall_scores = [71, 83, 96, 73,97,100,100]
@@ -78,6 +80,9 @@ def plot_recall():
     st.pyplot()
 
 def plot_latency():
+    """
+    Plots bar charts of 10-prediction average duration
+    """
     # latency duration
     st.set_option('deprecation.showPyplotGlobalUse', False)
     latency = [39, 1.43, 26.89, 1.69,10.88,3.38,2.18]
@@ -237,13 +242,13 @@ def show_vis_page():
 
 def show_about_page():
 
-    st.title('❓ LLM Question & Answer App')
+    st.title('❓ Ask Our Chatbot (Feature Coming Soon)')
     
     # File upload
-    uploaded_file = st.file_uploader('Upload a document (txt)', type='txt')
+    # uploaded_file = st.file_uploader('Upload a document (txt)', type='txt')
     
     # Query text input
-    query_text = st.text_input('Enter your question:', placeholder='Ask a question about the uploaded document')
+    query_text = st.text_input('Enter your question:', placeholder='Ask a question about our project')
     
     # Form submission and response display
     if uploaded_file is not None and query_text:
@@ -254,7 +259,8 @@ def show_about_page():
           response = generate_response(documents, query_text)
           st.success(f"Answer: {response}")
         except Exception as e:
-          st.error(f"An error occurred: {e}")
+            st.text("This feature is coming soon") 
+          # st.error(f"An error occurred: {e}")
    
 
     
