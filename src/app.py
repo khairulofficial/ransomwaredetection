@@ -4,20 +4,6 @@ from test import test_model
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 import matplotlib.pyplot as plt
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings.openai import OpenAIEmbeddings 
-from langchain.vectorstores import FAISS
-from langchain.llms import OpenAI
-from langchain.chains.question_answering import load_qa_chain
-from langchain.callbacks import get_openai_callback
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import Chroma
-from langchain.chains import RetrievalQA
-import pysqlite3 
-import os
-from PyPDF2 import PdfReader
-from dotenv import load_dotenv
-import pickle
 from streamlit_extras.add_vertical_space import add_vertical_space
 
 
@@ -112,29 +98,6 @@ def plot_latency():
 
 openai_api_key = "OPENAI_API_KEY"
 
-def generate_response(documents, query_text):
-  """
-  This function processes uploaded documents, generates embeddings,
-  and uses retrieval-based QA to answer the user's query.
-  """
-  # Split documents into chunks
-  text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-  texts = text_splitter.create_documents(documents)
-
-  # Select embeddings
-  embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
-
-  # Create a vectorstore from documents
-  db = Chroma.from_documents(texts, embeddings)
-
-  # Create retriever interface
-  retriever = db.as_retriever()
-
-  # Create QA chain
-  qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
-
-  # Run the QA model and return the answer
-  return qa.run(query_text)
     
 def show_home_page():
     st.title("Ransomware Detection App")
@@ -253,12 +216,6 @@ def show_about_page():
     # Form submission and response display
     if query_text:
       with st.spinner('Thinking...'):
-        try:
-          # Decode uploaded file (assuming UTF-8 encoding)
-          documents = [uploaded_file.read().decode('utf-8')]
-          response = generate_response(documents, query_text)
-          st.success(f"Answer: {response}")
-        except Exception as e:
             st.markdown("""This feature is coming soon by end May. Stay tuned for updates! Meanwhile, here is more information about our project. 
 
 Small and medium-sized enterprises (SMEs) are highly vulnerable to ransomware attacks. Facing budget and resource constraints, SMEs may not be 
