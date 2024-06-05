@@ -5,7 +5,7 @@ import hydralit_components as hc
 from streamlit_option_menu import option_menu
 import matplotlib.pyplot as plt
 from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
-from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
+from langchain.embeddings.openai import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
 from langchain.vectorstores import FAISS, Chroma
 from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
@@ -113,65 +113,32 @@ def plot_latency():
     st.pyplot()
     
 
-# openai_api_key = "OPENAI_API_KEY"
-
-def get_pdf_text(pdf_docs):
-    text = ""
-    for pdf in pdf_docs:
-        pdf_reader = PdfReader(pdf)
-        for page in pdf_reader.pages:
-            text += page.extract_text()
-    return text
+openai_api_key = "OPENAI_API_KEY"
 
 
-def get_text_chunks(text):
-    text_splitter = CharacterTextSplitter(
-        separator="\n",
-        chunk_size=1000,
-        chunk_overlap=200,
-        length_function=len
-    )
-    chunks = text_splitter.split_text(text)
-    return chunks
+def generate_response(documents, query_text):
+  """
+  This function processes uploaded documents, generates embeddings,
+  and uses retrieval-based QA to answer the user's query.
+  """
+  # Split documents into chunks
+  text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+  texts = text_splitter.create_documents(documents)
 
+  # Select embeddings
+  embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
 
-def get_vectorstore(text_chunks):
-    # embeddings = OpenAIEmbeddings()
-    embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
-    vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
-    return vectorstore
+  # Create a vectorstore from documents
+  db = Chroma.from_documents(texts, embeddings)
 
+  # Create retriever interface
+  retriever = db.as_retriever()
 
-def get_conversation_chain(vectorstore):
-    # llm = ChatOpenAI()
-    llm = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={"temperature":0.5, "max_length":512})
+  # Create QA chain
+  qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
 
-    memory = ConversationBufferMemory(
-        memory_key='chat_history', return_messages=True)
-    conversation_chain = ConversationalRetrievalChain.from_llm(
-        llm=llm,
-        retriever=vectorstore.as_retriever(),
-        memory=memory
-    )
-    return conversation_chain
-
-
-def handle_userinput(user_question):
-    
-    # response = st.session_state.conversation({'question': user_question})
-    st.session_state['conversation'] = {'question': user_question}
-
-    st.session_state.chat_history = response['chat_history']
-
-    for i, message in enumerate(st.session_state.chat_history):
-        if i % 2 == 0:
-            st.write(user_template.replace(
-                "{{MSG}}", message.content), unsafe_allow_html=True)
-        else:
-            st.write(bot_template.replace(
-                "{{MSG}}", message.content), unsafe_allow_html=True)
-
-
+  # Run the QA model and return the answer
+  return qa.run(query_text)
     
 def show_home_page():
     st.title("Ransomware Detection App")
@@ -279,38 +246,42 @@ def show_vis_page():
 
 def show_about_page():
 
-    load_dotenv()
-    st.write(css, unsafe_allow_html=True)
-
-    if "conversation" not in st.session_state:
-        st.session_state.conversation = None
-    if "chat_history" not in st.session_state:
-        st.session_state.chat_history = None
-
-    st.header("Ask about the project")
-    user_question = st.text_input("Ask a question about your documents:")
-    if user_question:
-        handle_userinput(user_question)
-
+    st.title('❓ Ask Our Chatbot (Feature Coming Soon)')
     
-    st.subheader("Your documents")
-    pdf_docs = st.file_uploader(
-        "Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
-    if st.button("Process"):
-        with st.spinner("Processing"):
-            # get pdf text
-            raw_text = get_pdf_text(pdf_docs)
+    # File upload
+    # uploaded_file = st.file_uploader('Upload a document (txt)', type='txt')
+    
+    # Query text input
+    query_text = st.text_input('Enter your question:', placeholder='Ask a question about our project')
+    
+    # Form submission and response display
+    if query_text:
+      with st.spinner('Thinking...'):
+        try:
+          # Decode uploaded file (assuming UTF-8 encoding)
+          documents = [uploaded_file.read().decode('utf-8')]
+          response = generate_response(documents, query_text)
+          st.success(f"Answer: {response}")
+        except Exception as e:
+            st.markdown("""This feature is coming soon by end May. Stay tuned for updates! Meanwhile, here is more information about our project. 
 
-            # get the text chunks
-            text_chunks = get_text_chunks(raw_text)
+Small and medium-sized enterprises (SMEs) are highly vulnerable to ransomware attacks. Facing budget and resource constraints, SMEs may not be 
+equipped with the most sophisticated anti-ransomware technologies to detect and prevent ransomware attacks as such technologies can be costly. 
+Even if there is a certain level of anti-ransomware detection system in place, this is most likely a basic traditional system that may not capture 
+new variants of ransomware. This project explores the implementation of machine learning for ransomware detection using free and open-source tools 
+in order to address the constraints aforementioned. 
 
-            # create vector store
-            vectorstore = get_vectorstore(text_chunks)
+In this project, we explore using lesser features which will result in less resources, time and money required to collect, process and analyse 
+unnecessary features. Based on the experiment results, we recommend SMEs to use Random Forest along with 2 behavioural features in order to achieve 
+an accuracy score that is above the 90% threshold. SMEs will still have the flexibility to choose which model and features suits their requirements. 
 
-            # create conversation chain
-            st.session_state.conversation = get_conversation_chain(
-                vectorstore)
-
+This app allows users in SMEs to obtain a prediction on whether a certain file is a ransomware or otherwise. Hence, SMEs are now able to adopt 
+low-cost machine learning-based ransomware detection systems as alternatives to both conventional systems and costly options. This enhances their
+protection against ransomware.
+""") 
+        
+          # st.error(f"An error occurred: {e}")
+   
 
     
 def main():
