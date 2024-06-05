@@ -5,7 +5,7 @@ import hydralit_components as hc
 from streamlit_option_menu import option_menu
 import matplotlib.pyplot as plt
 from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
-from langchain.embeddings.openai import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
+from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
 from langchain.vectorstores import FAISS, Chroma
 from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
