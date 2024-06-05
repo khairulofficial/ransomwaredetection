@@ -4,7 +4,7 @@ streamlit
 hydralit_components
 streamlit_option_menu
 matplotlib
-langchain==0.0.154
+langchain
 PyPDF2
 python-dotenv
 faiss-cpu
@@ -13,3 +13,7 @@ openai
 chromadb
 tiktoken
 pysqlite3-binary
+pypdf2
+huggingface-hub==0.14.1
+InstructorEmbedding==1.0.1
+sentence-transformers==2.2.2
