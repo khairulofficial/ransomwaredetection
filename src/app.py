@@ -4,12 +4,14 @@ from test import test_model
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 import matplotlib.pyplot as plt
-from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
-# from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
-from langchain.vectorstores import FAISS, Chroma
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.embeddings.openai import OpenAIEmbeddings 
+from langchain.vectorstores import FAISS
 from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 import pysqlite3 
 import os
@@ -17,11 +19,6 @@ from PyPDF2 import PdfReader
 from dotenv import load_dotenv
 import pickle
 from streamlit_extras.add_vertical_space import add_vertical_space
-from langchain.chat_models import ChatOpenAI
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
-from htmlTemplates import css, bot_template, user_template
-from langchain.llms import HuggingFaceHub
 
 
 def plot_accuracy():
@@ -114,7 +111,6 @@ def plot_latency():
     
 
 openai_api_key = "OPENAI_API_KEY"
-
 
 def generate_response(documents, query_text):
   """
