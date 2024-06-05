@@ -113,7 +113,7 @@ def plot_latency():
     st.pyplot()
     
 
-openai_api_key = "OPENAI_API_KEY"
+# openai_api_key = "OPENAI_API_KEY"
 
 def get_pdf_text(pdf_docs):
     text = ""
@@ -287,7 +287,7 @@ def show_about_page():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Chat with multiple PDFs :books:")
+    st.header("Ask about the project")
     user_question = st.text_input("Ask a question about your documents:")
     if user_question:
         handle_userinput(user_question)
