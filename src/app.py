@@ -246,8 +246,7 @@ def show_about_page():
             result = chain({"question": query_text, "chat_history": []})
             # Form submission and response display
             
-            with st.spinner('Thinking...'):
-                st.markdown(result['answer'])
+            st.markdown(result['answer'])
         else:
             st.markdown("""This feature is coming soon by end May. Stay tuned for updates! Meanwhile, here is more information about our project. 
 
@@ -265,8 +264,7 @@ This app allows users in SMEs to obtain a prediction on whether a certain file i
 low-cost machine learning-based ransomware detection systems as alternatives to both conventional systems and costly options. This enhances their
 protection against ransomware.
 """) 
-        
-          # st.error(f"An error occurred: {e}")
+   
    
 
     
