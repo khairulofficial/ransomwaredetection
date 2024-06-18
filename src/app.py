@@ -216,37 +216,39 @@ def show_vis_page():
 def show_about_page():
     
     st.title('❓ Ask Our Chatbot (Feature Coming Soon)')
-
- 
-    loader = WebBaseLoader(["https://drive.google.com/file/d/1saSOn0CVc6pzks1diZ0xmQTCXINOsIPw/view?usp=drive_link"])
-    pages = loader.load()
-  
-    
-    
-    # Step 2: Split the document into chunks with a specified chunk size
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
-    all_splits = text_splitter.split_documents(pages) # replace pages w documents
-    
-    # Step 3: Store the document into a vector store with a specific embedding model
-    vectorstore = FAISS.from_documents(all_splits, HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2"))
-    GROQ_API_TOKEN = "agsk_byhznM1QjVv2jlScRvbCWGdyb3FYzMmDst9xVMYFOae83Je72zRxb"[1:-1]
-
-    os.environ["GROQ_API_KEY"] = GROQ_API_TOKEN
-
-    llm = ChatGroq(temperature=0, model_name="llama3-8b-8192")
-    # File upload
-    # uploaded_file = st.file_uploader('Upload a document (txt)', type='txt')
-    chain = ConversationalRetrievalChain.from_llm(llm,
-                                              vectorstore.as_retriever(),
-                                              return_source_documents=True)
-    
-    # Query text input
     query_text = st.text_input('Enter your question:', placeholder='Ask a question about our project')
-    result = chain({"question": query_text, "chat_history": []})
-    # Form submission and response display
     if query_text:
-      with st.spinner('Thinking...'):
-            st.markdown(result['answer'])
+        try: 
+            loader = WebBaseLoader(["https://drive.google.com/file/d/1saSOn0CVc6pzks1diZ0xmQTCXINOsIPw/view?usp=drive_link"])
+            pages = loader.load()
+          
+            
+            
+            # Step 2: Split the document into chunks with a specified chunk size
+            text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+            all_splits = text_splitter.split_documents(pages) # replace pages w documents
+            
+            # Step 3: Store the document into a vector store with a specific embedding model
+            vectorstore = FAISS.from_documents(all_splits, HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2"))
+            GROQ_API_TOKEN = "agsk_byhznM1QjVv2jlScRvbCWGdyb3FYzMmDst9xVMYFOae83Je72zRxb"[1:-1]
+        
+            os.environ["GROQ_API_KEY"] = GROQ_API_TOKEN
+        
+            llm = ChatGroq(temperature=0, model_name="llama3-8b-8192")
+            # File upload
+            # uploaded_file = st.file_uploader('Upload a document (txt)', type='txt')
+            chain = ConversationalRetrievalChain.from_llm(llm,
+                                                      vectorstore.as_retriever(),
+                                                      return_source_documents=True)
+            
+            # Query text input
+            
+            result = chain({"question": query_text, "chat_history": []})
+            # Form submission and response display
+            
+            with st.spinner('Thinking...'):
+                st.markdown(result['answer'])
+        else:
             st.markdown("""This feature is coming soon by end May. Stay tuned for updates! Meanwhile, here is more information about our project. 
 
 Small and medium-sized enterprises (SMEs) are highly vulnerable to ransomware attacks. Facing budget and resource constraints, SMEs may not be 
