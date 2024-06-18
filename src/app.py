@@ -247,7 +247,7 @@ def show_about_page():
             # Form submission and response display
             
             st.markdown(result['answer'])
-        else:
+        except:
             st.markdown("""This feature is coming soon by end May. Stay tuned for updates! Meanwhile, here is more information about our project. 
 
 Small and medium-sized enterprises (SMEs) are highly vulnerable to ransomware attacks. Facing budget and resource constraints, SMEs may not be 
