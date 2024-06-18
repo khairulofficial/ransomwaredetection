@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 from streamlit_extras.add_vertical_space import add_vertical_space
 
 
-from IPython.display import display, Markdown
 import os
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
