@@ -217,8 +217,10 @@ def show_about_page():
     
     st.title('❓ Ask Our Chatbot (Feature Coming Soon)')
 
-    loader = loader = PyPDFLoader("/content/ransomwarepdf.pdf")
-    pages = loader.load_and_split()
+ 
+    loader = WebBaseLoader(["https://drive.google.com/file/d/1saSOn0CVc6pzks1diZ0xmQTCXINOsIPw/view?usp=drive_link"])
+    pages = loader.load()
+  
     
     
     # Step 2: Split the document into chunks with a specified chunk size
